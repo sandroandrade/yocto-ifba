@@ -1,3 +1,7 @@
+apt-get clean && apt-get update && apt-get install -y locales
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
      build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
      xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
@@ -17,9 +21,7 @@ mkdir -p ~/rpi/build/conf
 
 source ~/poky-warrior/oe-init-build-env ~/rpi/build
 
-cp meta-rpi/conf/local.conf.sample build/conf/local.conf
-cp meta-rpi/conf/bblayers.conf.sample build/conf/bblayers.conf
-
-source ~/poky-warrior/oe-init-build-env ~/rpi/build
+cp ~/rpi/meta-rpi/conf/local.conf.sample ~/rpi/build/conf/local.conf
+cp ~/rpi/meta-rpi/conf/bblayers.conf.sample ~/rpi/build/conf/bblayers.conf
 
 bitbake qt5-image
