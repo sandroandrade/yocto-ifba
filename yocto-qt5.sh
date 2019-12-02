@@ -8,21 +8,15 @@ apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
      xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
      xterm
 
-git clone -b warrior git://git.yoctoproject.org/poky.git ~/poky-warrior
-cd ~/poky-warrior
-git clone -b warrior git://git.openembedded.org/meta-openembedded
-git clone -b warrior https://github.com/meta-qt5/meta-qt5
-git clone -b warrior git://git.yoctoproject.org/meta-raspberrypi
+mkdir yoctoproject
+cd yoctoproject
 
-mkdir ~/rpi
-cd ~/rpi
-git clone -b warrior git://github.com/jumpnow/meta-rpi
+git clone -b morty git://git.yoctoproject.org/poky
+git clone -b morty git://git.openembedded.org/meta-openembedded
+git clone -b morty git://git.yoctoproject.org/meta-raspberrypi
+git clone -b morty https://github.com/meta-qt5/meta-qt5.git
+git clone https://github.com/GomesWesley/meta-mylayer.git
 
-mkdir -p ~/rpi/build/conf
-
-source ~/poky-warrior/oe-init-build-env ~/rpi/build
-
-cp ~/rpi/meta-rpi/conf/local.conf.sample ~/rpi/build/conf/local.conf
-cp ~/rpi/meta-rpi/conf/bblayers.conf.sample ~/rpi/build/conf/bblayers.conf
-
-bitbake qt5-image
+mv -f ~/yoctoproject/meta-mylayer/build/ ~/yoctoproject/
+source poky/oe-init-build-env build
+echo | bitbake qt5-image
