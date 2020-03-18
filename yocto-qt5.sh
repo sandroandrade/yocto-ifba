@@ -21,4 +21,4 @@ git clone https://github.com/GomesWesley/meta-mylayer.git
 mv -f ~/yoctoproject/meta-mylayer/build/ ~/yoctoproject/
 source poky/oe-init-build-env build
 touch conf/sanity.conf
-echo | bitbake qt5-image
+bitbake qt5-image
