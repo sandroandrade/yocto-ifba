@@ -8,6 +8,7 @@ apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
      xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
      xterm
 
+cd /root
 mkdir yoctoproject
 cd yoctoproject
 
@@ -19,4 +20,5 @@ git clone https://github.com/GomesWesley/meta-mylayer.git
 
 mv -f ~/yoctoproject/meta-mylayer/build/ ~/yoctoproject/
 source poky/oe-init-build-env build
+touch conf/sanity.conf
 echo | bitbake qt5-image
